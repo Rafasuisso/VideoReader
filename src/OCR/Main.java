@@ -15,10 +15,11 @@ import org.opencv.videoio.VideoCapture;
 public class Main {
     VideoCapture capture;
     String caminho;
-    public Main (String caminho){
+    public Main (String caminho, VideoCapture capture){
         this.caminho= caminho;
+        this.capture= capture;
       //teste();  
-      frames();
+     // frames();
     }
     
     public void teste(){
@@ -29,7 +30,7 @@ public class Main {
     
     public void frames(){
         
-        capture = new VideoCapture(caminho);
+        //capture = new VideoCapture(caminho);
         Mat frame = new Mat();
         JFrame jframe = new JFrame("MyTitle");
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

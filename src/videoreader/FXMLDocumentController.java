@@ -20,6 +20,7 @@ import static javafx.scene.media.MediaPlayer.Status.PLAYING;
 import javafx.scene.media.MediaView;
 import javafx.stage.FileChooser;
 import javax.swing.JOptionPane;
+import org.opencv.videoio.VideoCapture;
 
 /**
  *
@@ -29,6 +30,7 @@ public class FXMLDocumentController implements Initializable {
     Media media;
     String VUrl;
     MediaPlayer mediaPlayer;
+    public  VideoCapture capture = new VideoCapture();
     @FXML
     private MediaView mv;
     @FXML
@@ -49,6 +51,7 @@ public class FXMLDocumentController implements Initializable {
        File file =fc.showOpenDialog(null);
        if(file!= null){
            VUrl = file.toURI().toString();
+         this.capture.open(file.getAbsolutePath());
            media = new Media(file.toURI().toString());
            mediaPlayer = new MediaPlayer(media); // 2
            mv.setFitHeight(800); 
@@ -71,7 +74,7 @@ public class FXMLDocumentController implements Initializable {
     }
      @FXML
     private void onClick_btn_OCR(){
-       Main main = new Main(VUrl);
+      Main main = new Main(VUrl, capture);
        
     }
 }
