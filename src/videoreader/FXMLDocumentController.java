@@ -30,7 +30,7 @@ public class FXMLDocumentController implements Initializable {
     Media media;
     String VUrl;
     MediaPlayer mediaPlayer;
-    public  VideoCapture capture = new VideoCapture();
+  //  public  VideoCapture capture = new VideoCapture();
     @FXML
     private MediaView mv;
     @FXML
@@ -50,8 +50,8 @@ public class FXMLDocumentController implements Initializable {
        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Video Files", "*.mp4"));
        File file =fc.showOpenDialog(null);
        if(file!= null){
-           VUrl = file.toURI().toString();
-         this.capture.open(file.getAbsolutePath());
+           VUrl = file.getAbsolutePath();
+       // this.capture.open(file.getAbsolutePath());
            media = new Media(file.toURI().toString());
            mediaPlayer = new MediaPlayer(media); // 2
            mv.setFitHeight(800); 
@@ -74,7 +74,7 @@ public class FXMLDocumentController implements Initializable {
     }
      @FXML
     private void onClick_btn_OCR(){
-      Main main = new Main(VUrl, capture);
+     Main main = new Main(VUrl);// capture);
        
     }
 }

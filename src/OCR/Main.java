@@ -15,11 +15,12 @@ import org.opencv.videoio.VideoCapture;
 public class Main {
     VideoCapture capture;
     String caminho;
-    public Main (String caminho, VideoCapture capture){
+   // Video video;
+    public Main (String caminho){
         this.caminho= caminho;
-        this.capture= capture;
-      //teste();  
-     // frames();
+     //   this.capture= capture;
+     //teste();  
+     frames();
     }
     
     public void teste(){
@@ -29,7 +30,7 @@ public class Main {
     }
     
     public void frames(){
-        
+       // video = new Video(caminho);
         //capture = new VideoCapture(caminho);
         Mat frame = new Mat();
         JFrame jframe = new JFrame("MyTitle");
@@ -37,16 +38,17 @@ public class Main {
         JLabel vidpanel = new JLabel();
         jframe.setContentPane(vidpanel);
         jframe.setVisible(true);
+        jframe.setSize(800, 600);
 
-        while (true) {
-            if (capture.read(frame)) {
+       // while (true) {
+           // if (video.read(frame)) {
 
-                ImageIcon image = new ImageIcon(Mat2bufferedImage(frame));
-                vidpanel.setIcon(image);
+              //  ImageIcon image = new ImageIcon(video.getFrame());
+            //    vidpanel.setIcon(image);
                 vidpanel.repaint();
 
-            }
-        }
+           // }
+       // }
     }
 
     private String Mat2bufferedImage(Mat frame) {
